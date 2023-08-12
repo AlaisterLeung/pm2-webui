@@ -2,9 +2,9 @@
   <div class="row row-deck pt-4">
       <div class="col-md-3 mb-4" style="height:100%">
         <div class="card">
-          <div class="card-status-top bg-indigo"></div>
-          <div class="card-body">
-            <div class="card-title text-primary">
+          <div class="card-status-top bg-cyan"></div>
+          <div class="card-body bg-dark">
+            <div class="card-title text-light">
               <strong>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -22,7 +22,7 @@
                 <span class="badge bg-red-lt"><%= app.status %></span>
               <% } %>
             </div>
-            <h4 class="text-secondary">
+            <h4 class="text-dimmed">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <rect x="3" y="4" width="18" height="8" rx="3"></rect>
@@ -31,7 +31,7 @@
                 <line x1="7" y1="16" x2="7" y2="16.01"></line>
               </svg>
               CPU : <%= app.cpu %> %</h4>
-            <h4 class="text-secondary">
+            <h4 class="text-dimmed">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-desktop-analytics" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <rect x="3" y="4" width="18" height="12" rx="1"></rect>
@@ -44,7 +44,7 @@
                 <path d="M12 12v-1"></path>
               </svg>
               Memory : <%= app.memory %></h4>
-            <h4 class="text-secondary">
+            <h4 class="text-dimmed">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4"></path>
@@ -56,7 +56,7 @@
               </svg>
               Uptime : <%= app.uptime %></h4>
             <% if(app.git_branch){ %>
-            <h4 class="text-secondary">
+            <h4 class="text-dimmed">
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-git-branch" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <circle cx="7" cy="18" r="2" />
@@ -69,7 +69,7 @@
               Git Branch : <%= app.git_branch %></h4>
               <% } %>
               <% if(app.git_commit){ %>
-              <h4 class="text-secondary">
+              <h4 class="text-dimmed">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-git-commit" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <circle cx="12" cy="12" r="3" />
@@ -79,7 +79,7 @@
                 Git Commit : <%= app.git_commit %></h4>
               <% } %>
               <% if(app.env_file){ %>
-              <h4 class="text-secondary">
+              <h4 class="text-dimmed">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-text" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                   <path d="M14 3v4a1 1 0 0 0 1 1h4" />
@@ -89,13 +89,13 @@
                   <line x1="9" y1="17" x2="15" y2="17" />
                 </svg>
                 Env File : 
-                <a  href="#" class="btn btn-sm btn-white" data-bs-toggle="modal" data-bs-target="#modal-scrollable">
+                <a  href="#" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#modal-scrollable">
                   Open File
                 </a>
               </h4>
               <% } %>
           </div>
-          <div class="card-footer text-center">
+          <div class="card-footer text-center bg-secondary">
             <% if(app.status === "online"){ %>
               <button class="btn btn-sm btn-green" aria-label="Button" onclick="pm2AppAction('<%= app.name %>', 'reload')">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -144,16 +144,16 @@
       </div>
       <div class="col-md-9 mb-4">
         <div class="card">
-          <ul class="nav nav-tabs" data-bs-toggle="tabs">
-            <li class="nav-item">
-              <a href="#stdout" class="nav-link active" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+          <ul class="nav bg-dark" data-bs-toggle="tabs">
+            <li class="nav-item text-light">
+              <a href="#stdout" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3"></path>
                </svg>
                 STDOUT</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item text-light">
               <a href="#stderr" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -162,13 +162,13 @@
                 STDERR</a>
             </li>
             <li class="nav-item ms-auto">
-              <button class="btn btn-icon shadow-none" style="border:none !important;" onclick="nextLogs()">
+              <button class="btn btn-icon btn-dark shadow-none" style="border:none !important;" onclick="nextLogs()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-big-top" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M9 20v-8h-3.586a1 1 0 0 1 -.707 -1.707l6.586 -6.586a1 1 0 0 1 1.414 0l6.586 6.586a1 1 0 0 1 -.707 1.707h-3.586v8a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
                </svg>
               </button>
-              <button class="btn btn-icon shadow-none" style="border:none !important;" onclick="refreshLogs()">
+              <button class="btn btn-icon btn-dark shadow-none" style="border:none !important;" onclick="refreshLogs()">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path>
@@ -177,7 +177,7 @@
               </button>
             </li>
           </ul>
-          <div class="card-body">
+          <div class="card-body bg-dark">
             <div class="tab-content">
               <div class="tab-pane active" id="stdout" data-next-key="<%= logs.stdout.nextKey %>">
                 <code class="bg-dark" style="display:block; overflow-y:scroll; max-height:50vh !important; max-height:75vh !important; min-width:100%;"><%- logs.stdout.lines %></code>
@@ -195,17 +195,17 @@
 <div class="modal fade" id="modal-scrollable" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header text-light bg-dark">
         <h5 class="modal-title"><%= app.name %> [.env]</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body bg-dark">
         <% if(app.env_file){ %>
           <pre><code class="language-bash"><%= app.env_file %></code></pre>
         <% } %>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn ml-auto" data-bs-dismiss="modal">Close</button>
+      <div class="modal-footer bg-dark">
+        <button type="button" class="btn btn-info ml-auto" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -28,6 +28,7 @@ router.post('/login', loginRateLimiter, checkAuthentication, async (ctx) => {
     const { username, password } = ctx.request.body;
     try {
         await validateAdminUser(username, password)
+        ctx.session.username = username;
         ctx.session.isAuthenticated = true;
         return ctx.redirect('/apps')
     }
@@ -38,8 +39,10 @@ router.post('/login', loginRateLimiter, checkAuthentication, async (ctx) => {
 
 router.get('/apps', isAuthenticated, async (ctx) => {
     const apps =  await listApps()
+    const username = ctx.session.username;
     return await ctx.render('apps/dashboard', {
-      apps
+        apps,
+        username,
     });
 });
 
@@ -63,8 +66,10 @@ router.get('/apps/:appName', isAuthenticated, async (ctx) => {
         stderr.lines = stderr.lines.map(log => {
             return  ansiConvert.toHtml(log)
         }).join('<br/>')
+        const username = ctx.session.username;
         return await ctx.render('apps/app', {
             app,
+            username,
             logs: {
                 stdout,
                 stderr
@@ -76,7 +81,7 @@ router.get('/apps/:appName', isAuthenticated, async (ctx) => {
 
 router.get('/api/apps/:appName/logs/:logType', isAuthenticated, async (ctx) => {
     const { appName, logType } = ctx.params
-    const { linePerRequest, nextKey } = ctx.query
+    const { nextKey } = ctx.query
     if(logType !== 'stdout' && logType !== 'stderr'){
         return ctx.body = {
             'error': 'Log Type must be stdout or stderr'

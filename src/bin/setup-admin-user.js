@@ -3,7 +3,7 @@ const config = require('../config')
 const { createAdminUser } = require('../services/admin.service')
 
 const username_regex = /^(?=.{4,}$)[a-z0-9_]+$/
-const password_regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
+const password_regex = /^(?=.*\d)(?=.*[!-_@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
 
 const questions = [
   {
@@ -33,10 +33,10 @@ const questions = [
         return 'App password is required'
       }
       else if(value.length < 4){
-        return 'App username must have mininum 8 characters'
+        return 'App password must have mininum 8 characters'
       }
       else if(!password_regex.test(value)){
-        return 'App username must contain at least a symbol, upper and lower case letters and a number'
+        return 'App password must contain at least a symbol, upper and lower case letters and a number'
       }
       return true
     }

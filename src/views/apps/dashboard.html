@@ -3,10 +3,10 @@
     <% apps.forEach(function (app) {%>
       <div class="col-md-3 mb-5">
         <div class="card">
-          <div class="card-status-top bg-indigo"></div>
+          <div class="card-status-top bg-cyan"></div>
           <a href="/apps/<%= app.name %>" style="text-decoration: none; color: inherit;">
-            <div class="card-body">
-              <div class="card-title text-primary">
+            <div class="card-body bg-dark">
+              <div class="card-title text-light">
                 <strong>
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -23,7 +23,7 @@
                   <span class="badge bg-red-lt"><%= app.status %></span>
                 <% } %>
               </div>
-              <h4 class="text-secondary">
+              <h4 class="text-dimmed">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <rect x="3" y="4" width="18" height="8" rx="3"></rect>
@@ -32,7 +32,7 @@
                   <line x1="7" y1="16" x2="7" y2="16.01"></line>
                 </svg>
                 CPU : <%= app.cpu %> %</h4>
-              <h4 class="text-secondary">
+              <h4 class="text-dimmed">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-desktop-analytics" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <rect x="3" y="4" width="18" height="12" rx="1"></rect>
@@ -45,7 +45,7 @@
                   <path d="M12 12v-1"></path>
                 </svg>
                 Memory : <%= app.memory %></h4>
-              <h4 class="text-secondary">
+              <h4 class="text-dimmed">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4"></path>
@@ -58,7 +58,7 @@
                 Uptime : <%= app.uptime %></h4>
             </div>
           </a>
-          <div class="card-footer text-center">
+          <div class="card-footer text-center bg-secondary">
             <% if(app.status === "online"){ %>
               <button class="btn btn-sm btn-green" aria-label="Button" onclick="pm2AppAction('<%= app.name %>', 'reload')">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-refresh" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
